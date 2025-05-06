@@ -168,7 +168,7 @@ function App() {
   const createRoom = useCallback(() => {
 
     if (!socket) {
-      console.error("Socket is not connected.");
+      toast.error("Socket is not connected.");
       return;
     }
 
@@ -205,19 +205,19 @@ function App() {
         if (response.success === true) {
 
           setGeneratedRoomId(response.roomId)
-          console.log("Room created successfully:", response);
+          // console.log("Room created successfully:", response);
 
         } else {
-          console.error("Room creation failed");
+          toast.error("Room creation failed");
         }
       }
 
       if (response.type === "joined") {
         if (response.success === false) {
-          console.error(response.message);
+          toast.error(response.message);
         } else {
           setdata(response)
-          console.log(response);
+          // console.log(response);
         }
       }
       toast(response.message)
